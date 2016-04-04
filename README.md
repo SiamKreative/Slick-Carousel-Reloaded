@@ -1,5 +1,7 @@
 ## Another WordPress Slider Plugin... Why?
 
+[![Slick Carousel Demo](https://cloud.githubusercontent.com/assets/1778633/14246794/b49cc0fa-fa93-11e5-94af-b10336993c75.png)](https://dl.dropboxusercontent.com/u/28858864/slick-carousel-reloaded.mp4)
+
 There are so many WordPress slider plugins out there. But if you care about performance and user experience, you'll probably like this one. Here is why this implementation of [Slick Carousel](http://kenwheeler.github.io/slick/) is different from others:
 
 * Performance Optimization:
