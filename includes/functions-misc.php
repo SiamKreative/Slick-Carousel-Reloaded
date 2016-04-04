@@ -37,38 +37,47 @@ function wpscr_get_sliders() {
 
 	$sliders = array();
 
+	// Make sure we have a post
 	if ( ! isset( $post ) || ! is_object( $post ) || ! is_a( $post, 'WP_Post' ) ) {
 		return $sliders;
 	}
 
+	// No slider shortcode? Abort.
 	if ( ! has_shortcode( $post->post_content, 'slick_carousel' ) ) {
 		return $sliders;
 	}
 
+	// Get the registered shortcodes patterns
 	$pattern = get_shortcode_regex();
 
 	preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches );
 
+	// Make sure our $matches are set
 	if ( ! is_array( $matches ) || ! isset( $matches[2] ) ) {
 		return $sliders;
 	}
 
 	foreach ( $matches[2] as $key => $tag ) {
 
+		// Double check that this is indeed our shortcode
 		if ( 'slick_carousel' !== $tag ) {
 			continue;
 		}
 
+		// Triple check that the atts are matched
 		if ( ! isset( $matches[3][ $key ] ) ) {
 			continue;
 		}
 
+		// Get the shortcode atts
 		$atts = shortcode_parse_atts( $matches[3][ $key ] );
 
+		// We really only need the slider ID so let's just check for that
 		if ( ! is_array( $atts ) || ! array_key_exists( 'id', $atts ) ) {
 			continue;
 		}
 
+		// Add our slider to the list
 		$sliders[] = (int) $atts['id'];
 
 	}
