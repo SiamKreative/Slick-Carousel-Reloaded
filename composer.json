@@ -1,0 +1,7 @@
+{
+    "require": {
+        "php": ">=5.6.0",
+        "gambitph/titan-framework": "1.9.*",
+		"jjgrainger/wp-custom-post-type-class": "dev-master"
+    }
+}

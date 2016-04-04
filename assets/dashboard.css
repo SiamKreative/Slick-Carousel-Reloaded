@@ -1,0 +1,107 @@
+/**
+ * Hide slug
+ */
+#edit-slug-box {
+	display: none;
+}
+
+/**
+ * Right Metabox "Slider Shortcode"
+ */
+#wpscr_slider_sc:empty {
+	display: none;
+}
+#wpscr_slider_sc {
+	background-color: #f1f1f1;
+	width: 100%;
+	margin-bottom: 10px;
+}
+#wpscr_slider_sc_copy {
+	position: relative;
+	padding-right: 40px;
+}
+#wpscr_slider_sc_copy > img {
+	vertical-align: middle;
+	margin-left: 10px;
+	background: #ddd;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+/**
+ * Customize the image radio input of Titan Framework
+ */
+td.tf-radio-image input {
+	/* visually hidden */	
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+td.tf-radio-image label {
+	opacity: .5;
+	border: 5px solid transparent;
+	transition: all .3s ease;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: center;
+	/* reset */
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+td.tf-radio-image label:hover, 
+td.tf-radio-image label.selected {
+	opacity: 1;
+	border: 5px solid #222;
+}
+td.tf-radio-image label:nth-child(1) {
+	background-color: #1ABC9C;
+}
+td.tf-radio-image label:nth-child(2) {
+	background-color: #34495E;
+}
+td.tf-radio-image label:nth-child(3) {
+	background-color: #F39C12;
+}
+td.tf-radio-image label:nth-child(4) {
+	background-color: #9B59B6;
+}
+td.tf-radio-image label:nth-child(5) {
+	background-color: #3498DB;
+}
+td.tf-radio-image label:nth-child(6) {
+	background-color: #E74C3C;
+}
+td.tf-radio-image label:nth-child(7) {
+	background-color: #2ECC71;
+}
+td.tf-radio-image label:nth-child(8) {
+	background-color: #2C3E50;
+}
+td.tf-radio-image label:nth-child(9) {
+	background-color: #F1C40F;
+}
+td.tf-radio-image label:nth-child(10) {
+	background-color: #8E44AD;
+}
+td.tf-radio-image label:nth-child(11) {
+	background-color: #2980B9;
+}
+td.tf-radio-image label:nth-child(12) {
+	background-color: #E74C3C;
+}
+td.tf-radio-image img {
+	width: 40px;
+}

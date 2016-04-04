@@ -1,0 +1,104 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "3481b1a6af761d995e88966df2c8d0ad",
+    "content-hash": "6dd446e85b2d647c382d0fa5ab124df9",
+    "packages": [
+        {
+            "name": "gambitph/titan-framework",
+            "version": "1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gambitph/Titan-Framework.git",
+                "reference": "793bee37350acf4ff10ebf1068aa6d16cdc44da1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/793bee37350acf4ff10ebf1068aa6d16cdc44da1",
+                "reference": "793bee37350acf4ff10ebf1068aa6d16cdc44da1",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "titan-framework.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv2+"
+            ],
+            "authors": [
+                {
+                    "name": "Gambit Technologies",
+                    "email": "info@gambit.ph",
+                    "homepage": "http://www.titanframework.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Titan Framework allows theme and plugin developers to create admin pages, options, meta boxes, and theme customizer options with just a few simple lines of code.",
+            "homepage": "https://github.com/gambitph/Titan-Framework",
+            "keywords": [
+                "Titan Framework",
+                "framework",
+                "options",
+                "titan",
+                "wordpress"
+            ],
+            "time": "2015-10-06 16:21:47"
+        },
+        {
+            "name": "jjgrainger/wp-custom-post-type-class",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jjgrainger/wp-custom-post-type-class.git",
+                "reference": "4c13028b5bf8f5034e4b1cdf67288ae1950ea296"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jjgrainger/wp-custom-post-type-class/zipball/4c13028b5bf8f5034e4b1cdf67288ae1950ea296",
+                "reference": "4c13028b5bf8f5034e4b1cdf67288ae1950ea296",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CPT": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Grainger",
+                    "email": "hello@joegrainger.co.uk",
+                    "homepage": "http://jjgrainger.co.uk"
+                }
+            ],
+            "description": "A single class to help you build more advanced custom post types quickly.",
+            "homepage": "https://github.com/jjgrainger/wp-custom-post-type-class",
+            "time": "2016-01-04 09:34:16"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "jjgrainger/wp-custom-post-type-class": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.6.0"
+    },
+    "platform-dev": []
+}
