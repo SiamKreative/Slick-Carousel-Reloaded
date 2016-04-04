@@ -18,4 +18,4 @@ I decided to create this because I never used a slider plugin that matches my UI
 As a performance-concerned developer, I want this plugin to be optimized for performance. This plugins 
 
 #### Contributors
-This plugin wouldn't exist without the help from @julien731. Huge thanks!
+This plugin wouldn't exist without the help from [@julien731](https://github.com/julien731). Huge thanks!
