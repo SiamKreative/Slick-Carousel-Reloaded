@@ -66,7 +66,7 @@ function wpscr_get_sliders() {
 		$atts = shortcode_parse_atts( $matches[3][ $key ] );
 
 		if ( ! is_array( $atts ) || ! array_key_exists( 'id', $atts ) ) {
-			return $sliders;
+			continue;
 		}
 
 		$sliders[] = (int) $atts['id'];
