@@ -17,19 +17,27 @@ function wpscr_load_frontend_assets() {
 		$wpscr_options = array(
 			// To avoid the stringification of the cast values you can use a nested array
 			'options' => array(
-				'dots' => true,
-				'infinite' => true,
-				'arrows' => true,
-				'speed' => 500,
-				'autoplay' => true,
-				'fade' => false,
-				'autoplaySpeed' => 4000,
-				'slidesToShow' => 1,
+				'dots'           => true,
+				'infinite'       => true,
+				'arrows'         => true,
+				'speed'          => 500,
+				'autoplay'       => true,
+				'fade'           => false,
+				'autoplaySpeed'  => 4000,
+				'slidesToShow'   => 1,
 				'slidesToScroll' => 1,
 				'adaptiveHeight' => false,
-				'lazyLoad' => 'ondemand'
-				),
-			);
+				'lazyLoad'       => 'ondemand'
+			),
+		);
+
+		$sliders = wpscr_get_sliders();
+
+		if ( ! empty( $sliders ) ) {
+			foreach ( $sliders as $slider_id ) {
+				$wpscr_options['sliders'][ $slider_id ] = wpscr_get_gallery_options( $slider_id );
+			}
+		}
 
 		// Pass parameters as inline script tag
 		wp_localize_script( 'wpscr_slick_init', 'wpscr', $wpscr_options );
