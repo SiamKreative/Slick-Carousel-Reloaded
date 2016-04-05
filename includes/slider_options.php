@@ -73,7 +73,7 @@ function wpscr_gallery_options() {
 				),
 			'type' => 'radio',
 			'desc' => __( 'Which type of lazy loading do you want to use? <a href="http://stackoverflow.com/a/25726743/1414881" target="_blank">More information here</a>.', WPSCR_I18NDOMAIN ),
-			'default' => '1',
+			'default' => 'false',
 			),
 		array(
 			'id' => 'slider_customparameters',
