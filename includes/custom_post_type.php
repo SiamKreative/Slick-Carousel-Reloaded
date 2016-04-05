@@ -53,7 +53,10 @@ $slider->populate_column('lazyload', function ($column, $post) {
 	$post_id         = $post->ID;
 	$titan           = TitanFramework::getInstance('wpscr');
 	$slider_lazyload = $titan->getOption('slider_lazyload', $post_id);
-	echo $slider_lazyload;
+	if ($slider_lazyload == 'false') {
+		$slider_lazyload = esc_html__('Disabled', WPSCR_I18NDOMAIN);
+	}
+	echo ucfirst($slider_lazyload);
 });
 
 // use custom icon for post type
