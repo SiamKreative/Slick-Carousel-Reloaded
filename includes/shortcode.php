@@ -23,10 +23,19 @@ function wpscr_shortcode( $atts ) {
 	// https://pippinsplugins.com/retrieving-image-urls-of-galleries/
 	$gallery = get_post_gallery( $a['id'], false );
 
-	// Check if Cloudinary is enabled
-	$titan = TitanFramework::getInstance( 'wpscr_settings' );
-	$cloudinary_username = $titan->getOption( 'slider_cloudinary_account' );
-	$cloudinary_url = "http://res.cloudinary.com/$cloudinary_username/image/fetch/";
+	// Cloudinary integration
+	$cloudinary_url = "";
+	$whitelist = array(
+		'127.0.0.1',
+		'::1'
+	);
+
+	// Disable if localhost
+	if( !in_array($_SERVER['REMOTE_ADDR'], $whitelist) ) {
+		$titan = TitanFramework::getInstance( 'wpscr_settings' );
+		$cloudinary_username = $titan->getOption( 'slider_cloudinary_account' );
+		$cloudinary_url = "https://res.cloudinary.com/$cloudinary_username/image/fetch/";
+	}
 
 	if( $gallery ) {
 	$attachments = explode( ",", $gallery['ids'] );
