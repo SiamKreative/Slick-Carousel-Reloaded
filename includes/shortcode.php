@@ -24,13 +24,13 @@ function wpscr_shortcode( $atts ) {
 	$gallery = get_post_gallery( $a['id'], false );
 
 	if( $gallery ) {
-	$ids = explode( ",", $gallery['ids'] );
+	$attachments = explode( ",", $gallery['ids'] );
 	
 		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $a['id'] .'" data-id="'. $a['id'] .'">';
-		foreach( $ids as $id ) {
+		foreach( $attachments as $attachment ) {
 	
-			$link = wp_get_attachment_url( $id );
-			$size = wp_get_attachment_image_src( $id, 'full');
+			$link = wp_get_attachment_url( $attachment );
+			$size = wp_get_attachment_image_src( $attachment, 'full');
 			$slider .= "<div class='wpscr_slide'><img src='$link' width='$size[1]' height='$size[2]' alt=''></div>";
 	
 		}
