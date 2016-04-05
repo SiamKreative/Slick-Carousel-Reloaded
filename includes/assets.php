@@ -14,23 +14,6 @@ function wpscr_load_frontend_assets() {
 		wp_enqueue_script( 'wpscr_slick', WPSCR_URL . 'assets/vendor/slick/slick.min.js', array( 'jquery' ), '1.5.9', true );
 		wp_enqueue_script( 'wpscr_slick_init', WPSCR_URL . 'assets/slick-carousel-reloaded.js', array( 'jquery', 'wpscr_slick' ), WPSCR_VERSION, true );
 
-		$wpscr_options = array(
-			// To avoid the stringification of the cast values you can use a nested array
-			'options' => array(
-				'dots'           => true,
-				'infinite'       => true,
-				'arrows'         => true,
-				'speed'          => 500,
-				'autoplay'       => true,
-				'fade'           => false,
-				'autoplaySpeed'  => 4000,
-				'slidesToShow'   => 1,
-				'slidesToScroll' => 1,
-				'adaptiveHeight' => false,
-				'lazyLoad'       => 'ondemand'
-			),
-		);
-
 		$sliders = wpscr_get_sliders();
 
 		if ( ! empty( $sliders ) ) {

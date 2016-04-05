@@ -26,7 +26,7 @@ function wpscr_shortcode( $atts ) {
 	if( $gallery ) {
 	$ids = explode( ",", $gallery['ids'] );
 	
-		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $a['id'] .'">';
+		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $a['id'] .'" data-id="'. $a['id'] .'">';
 		foreach( $ids as $id ) {
 	
 			$link   = wp_get_attachment_url( $id );
