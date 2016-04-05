@@ -4,24 +4,18 @@ add_shortcode( 'slick_carousel', 'wpscr_shortcode' );
 
 function wpscr_shortcode( $atts ) {
 
+	if(!isset($atts['id'])) {
+		return '';
+	} 
+
 	// Build the shortcode attributes
-	$attributes = wpscr_gallery_options();
-	$sc_array = array('id' => '');
-
-	foreach( $attributes as $attribute ) {
-		$key = $attribute['id'];
-		$default = $attribute['default'];
-		$sc_array[$key] = $default;
-	}
-
-	// Create the shortcode
-	$a = shortcode_atts( $sc_array, $atts );
+	$a = wpscr_get_gallery_options($atts['id']);
 
 	// Output the HTML
 	$slider = '';
 	
 	// https://pippinsplugins.com/retrieving-image-urls-of-galleries/
-	$gallery = get_post_gallery( $a['id'], false );
+	$gallery = get_post_gallery( $atts['id'], false );
 
 	// Cloudinary integration
 	$cloudinary_url = "";
@@ -40,7 +34,7 @@ function wpscr_shortcode( $atts ) {
 	if( $gallery ) {
 	$attachments = explode( ",", $gallery['ids'] );
 	
-		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $a['id'] .'" data-id="'. $a['id'] .'">';
+		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $atts['id'] .'" data-id="'. $atts['id'] .'">';
 		foreach( $attachments as $attachment ) {
 	
 			$link = wp_get_attachment_url( $attachment );
