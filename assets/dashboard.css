@@ -6,6 +6,20 @@
 }
 
 /**
+ * Table
+ */
+.wpsrc_true,
+.wpsrc_false {	
+	font-weight: bold;
+}
+.wpsrc_true {
+	color: #46b450;
+}
+.wpsrc_false {
+	color: #dc3232;
+}
+
+/**
  * Right Metabox "Slider Shortcode"
  */
 #wpscr_slider_sc:empty {
