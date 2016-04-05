@@ -29,9 +29,9 @@ function wpscr_shortcode( $atts ) {
 		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $a['id'] .'" data-id="'. $a['id'] .'">';
 		foreach( $ids as $id ) {
 	
-			$link   = wp_get_attachment_url( $id );
-			$image  = wp_get_attachment_image( $id, 'full');
-			$slider .= "<div class='wpscr_slide'><a href='$link'>" . $image . "</a></div>";
+			$link = wp_get_attachment_url( $id );
+			$size = wp_get_attachment_image_src( $id, 'full');
+			$slider .= "<div class='wpscr_slide'><img src='$link' width='$size[1]' height='$size[2]' alt=''></div>";
 	
 		}
 		$slider .= '</div>';
