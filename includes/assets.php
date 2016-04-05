@@ -8,7 +8,13 @@ function wpscr_load_frontend_assets() {
 
 		// Stylesheets
 		wp_enqueue_style( 'wpscr_slick',  WPSCR_URL . 'assets/vendor/slick/slick.css', array(), '1.5.9' );
-		wp_enqueue_style( 'wpscr_slick_theme',  WPSCR_URL . 'assets/vendor/slick/slick-theme.css', array(), '1.5.9' );
+
+		// Load Slick Theme
+		$titan         = TitanFramework::getInstance('wpscr_settings');
+		$default_theme = $titan->getOption('slider_default_theme');
+		if ($default_theme) {
+			wp_enqueue_style('wpscr_slick_theme', WPSCR_URL . 'assets/vendor/slick/slick-theme.css', array('wpscr_slick'), '1.5.9');
+		}
 
 		// Scripts
 		wp_enqueue_script( 'wpscr_slick', WPSCR_URL . 'assets/vendor/slick/slick.min.js', array( 'jquery' ), '1.5.9', true );
