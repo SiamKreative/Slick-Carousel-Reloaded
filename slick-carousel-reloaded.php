@@ -15,23 +15,24 @@ if( !defined('WPSCR_VERSION') ){
 }
 
 define( 'WPSCR_URL', plugin_dir_url( __FILE__ ) );
+define( 'WPSCR_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'WPSCR_I18NDOMAIN', 'wpscr' );
 define( 'WPSCR_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
-if ( file_exists( 'vendor/autoload.php' ) ) {
-	require_once( 'vendor/autoload.php' );
-	require_once( 'vendor/gambitph/titan-framework/titan-framework-checker.php' );
-	require_once( 'includes/assets.php' );
-	require_once( 'includes/custom_post_type.php' );
+if ( file_exists( WPSCR_PATH . 'vendor/autoload.php' ) ) {
+	require_once( WPSCR_PATH . 'vendor/autoload.php' );
+	require_once( WPSCR_PATH . 'vendor/gambitph/titan-framework/titan-framework-checker.php' );
+	require_once( WPSCR_PATH . 'includes/assets.php' );
+	require_once( WPSCR_PATH . 'includes/custom_post_type.php' );
 
-	require_once( 'includes/slider_options.php' );
-	require_once( 'includes/metaboxes.php' );
+	require_once( WPSCR_PATH . 'includes/slider_options.php' );
+	require_once( WPSCR_PATH . 'includes/metaboxes.php' );
 
-	require_once( 'includes/settings_page.php' );
-	require_once( 'includes/functions-misc.php' );
-	require_once( 'includes/functions-slider.php' );
-	require_once( 'includes/shortcode.php' );
-	require_once( 'includes/dashboard_customisations.php' );
+	require_once( WPSCR_PATH . 'includes/settings_page.php' );
+	require_once( WPSCR_PATH . 'includes/functions-misc.php' );
+	require_once( WPSCR_PATH . 'includes/functions-slider.php' );
+	require_once( WPSCR_PATH . 'includes/shortcode.php' );
+	require_once( WPSCR_PATH . 'includes/dashboard_customisations.php' );
 }
 
 add_action( 'admin_notices', 'wpscr_missing_dependencies_warning' );
@@ -43,7 +44,7 @@ add_action( 'admin_notices', 'wpscr_missing_dependencies_warning' );
  */
 function wpscr_missing_dependencies_warning() {
 
-	if ( file_exists( 'vendor/autoload.php' ) ) {
+	if ( file_exists( WPSCR_PATH . 'vendor/autoload.php' ) ) {
 		return;
 	} ?>
 
