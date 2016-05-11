@@ -18,8 +18,8 @@ define( 'WPSCR_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPSCR_I18NDOMAIN', 'wpscr' );
 define( 'WPSCR_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
-require_once( 'vendor/autoload.php' );
-require_once( 'vendor/gambitph/titan-framework/titan-framework-checker.php' );
+// Load composer dependencies individually
+require_once( 'vendor/gambitph/titan-framework/titan-framework-embedder.php' );
 require_once( 'vendor/johnbillion/extended-cpts/extended-cpts.php' );
 
 require_once( 'includes/assets.php' );
