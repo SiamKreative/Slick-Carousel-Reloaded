@@ -36,16 +36,15 @@ function wpscr_shortcode( $atts ) {
 	
 		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $atts['id'] .'" data-id="'. $atts['id'] .'">';
 		foreach( $attachments as $attachment ) {
-	
-			$link = wp_get_attachment_url( $attachment );
-			$size = wp_get_attachment_image_src( $attachment, 'full');
+
+			$media = wp_get_attachment_image_src( $attachment, 'full');
 
 			// Update markup for lazy load
 			if ($a['lazyload'] == 'ondemand' || $a['lazyload'] == 'progressive') {
 				// change the src attribute to data-lazy and add blank image
-				$image = "<img src='//www.gstatic.com/psa/static/1.gif' data-lazy='$cloudinary_url$link' width='$size[1]' height='$size[2]' alt=''>";
+				$image = "<img src='//www.gstatic.com/psa/static/1.gif' data-lazy='$cloudinary_url$media[0]' width='$media[1]' height='$media[2]' alt=''>";
 			} else {
-				$image = "<img src='$cloudinary_url$link' {{layi}} width='$size[1]' height='$size[2]' alt=''>";
+				$image = "<img src='$cloudinary_url$media[0]' {{layi}} width='$media[1]' height='$media[2]' alt=''>";
 			}
 
 			$slider .= "<div class='wpscr_slide'>$image</div>";
