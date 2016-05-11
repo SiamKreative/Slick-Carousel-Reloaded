@@ -97,3 +97,36 @@ function wpscr_get_slider_image_size_name( $post_id ) {
 	return 'wpscr_size_' . $post_id;
 
 }
+
+/**
+ * Optimize an image using Cloudinary if the integration is setup
+ *
+ * @since 1.0.0
+ *
+ * @param string $url The image original URL
+ *
+ * @return string
+ */
+function wpsrc_get_image_optimized_url( $url ) {
+
+	$whitelist = array(
+		'127.0.0.1',
+		'::1'
+	);
+
+	// Don't use Cloudinary if the image is loaded from localhost (development environment)
+	if ( ! in_array( $_SERVER['REMOTE_ADDR'], $whitelist ) ) {
+		return $url;
+	}
+
+	// Get Cloudinary username
+	$titan    = TitanFramework::getInstance( 'wpscr_settings' );
+	$username = $titan->getOption( 'slider_cloudinary_account' );
+
+	if ( empty( $username ) ) {
+		return $url;
+	}
+
+	return sprintf( 'https://res.cloudinary.com/%1$s/image/fetch/%2$s', $username, $url );
+
+}
