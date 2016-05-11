@@ -31,6 +31,7 @@ require_once( 'includes/metaboxes.php' );
 
 require_once( 'includes/settings_page.php' );
 require_once( 'includes/functions-misc.php' );
+require_once( 'includes/functions-slider.php' );
 require_once( 'includes/shortcode.php' );
 require_once( 'includes/dashboard_customisations.php' );
 

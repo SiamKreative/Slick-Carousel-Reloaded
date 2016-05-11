@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-add_action( 'init', 'wpscr_images_sizes_admin' );
+add_action( 'after_setup_theme', 'wpscr_images_sizes_admin' );
 /**
  * Defines the sliders images sizes
  *
@@ -40,13 +40,25 @@ add_action( 'init', 'wpscr_images_sizes_admin' );
  */
 function wpscr_images_sizes_admin() {
 
-	if ( ! is_admin() || ! isset( $_GET['post'] ) ) {
+	$post_id = false;
+
+	// Used for the media library upload
+	if ( isset( $_POST['post_id'] ) ) {
+		$post_id = (int) $_POST['post_id'];
+	}
+
+	// User for the post edit screen
+	if ( isset( $_GET['post'] ) ) {
+		$post_id = (int) $_GET['post'];
+	}
+
+	if ( false === $post_id ) {
 		return;
 	}
 
-	$post_id = (int) $_GET['post'];
-	$post    = get_post( $post_id );
+	$post = get_post( $post_id );
 
+	// Make sure we only apply this to the slider post type
 	if ( 'slider' !== $post->post_type ) {
 		return;
 	}
@@ -58,8 +70,30 @@ function wpscr_images_sizes_admin() {
 		return;
 	}
 
-	$size_name = 'wpscr_size_' . $post_id;
+	$size_name = wpscr_get_slider_image_size_name( $post_id );
 
 	add_image_size( $size_name, $width, $height );
+
+}
+
+/**
+ * Get the name of the custom image size
+ *
+ * @since 1.0.0
+ *
+ * @param int $post_id ID of the slider/post
+ *
+ * @return string
+ */
+function wpscr_get_slider_image_size_name( $post_id ) {
+
+	$width  = (int) get_post_meta( $post_id, 'wpscr_slider_width', true );
+	$height = (int) get_post_meta( $post_id, 'wpscr_slider_height', true );
+
+	if ( empty( $width ) || empty( $height ) ) {
+		return '';
+	}
+
+	return 'wpscr_size_' . $post_id;
 
 }
