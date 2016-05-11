@@ -23,7 +23,8 @@ function wpscr_shortcode( $atts ) {
 		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $atts['id'] .'" data-id="'. $atts['id'] .'">';
 		foreach( $attachments as $attachment ) {
 
-			$media = wp_get_attachment_image_src( $attachment, 'full');
+			$size      = wpscr_get_slider_image_size_name( (int) $atts['id'] );
+			$media     = wp_get_attachment_image_src( $attachment, $size );
 			$image_url = wpsrc_get_image_optimized_url( $media[0] );
 
 			// Update markup for lazy load
