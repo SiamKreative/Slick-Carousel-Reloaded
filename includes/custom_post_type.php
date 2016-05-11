@@ -1,63 +1,60 @@
 <?php
 
-// create a slider custom post type
-$slider = new CPT('slider');
+register_extended_post_type('slider', array(
 
-// define the columns to appear on the admin edit screen
-$slider->columns(array(
-	'cb'         => '<input type="checkbox" />',
-	'title'      => __('Title'),
-	'dimensions' => __('Size'),
-	'slides'     => __('Images'),
-	'dots'       => __('Dots'),
-	'arrows'     => __('Arrows'),
-	'lazyload'   => __('Lazy Load'),
-	'date'       => __('Date'),
+	# Add icon
+	'menu_icon'    => 'dashicons-images-alt2',
+
+	# Hide the post type to the site's main RSS feed:
+	'show_in_feed' => false,
+
+	# Add some custom columns to the admin screen:
+	'admin_cols'   => array(
+		'dimensions' => array(
+			'title'    => 'Size',
+			'function' => function () {
+				global $post;
+				$post_id       = $post->ID;
+				$titan         = TitanFramework::getInstance('wpscr');
+				$slider_width  = $titan->getOption('slider_width', $post_id);
+				$slider_height = $titan->getOption('slider_height', $post_id);
+				echo "<code>$slider_width</code> &times; <code>$slider_height</code>";
+			},
+		),
+		'slides'     => array(
+			'title'    => 'Images',
+			'function' => function () {
+				global $post;
+				$post_id = $post->ID;
+				$gallery = get_post_gallery($post_id, false);
+				$count   = count($gallery['src']);
+				echo $count;
+			},
+		),
+		'dots'       => array(
+			'title'    => 'Dots',
+			'meta_key' => 'wpscr_slider_dots',
+		),
+		'arrows'     => array(
+			'title'    => 'Arrows',
+			'meta_key' => 'wpscr_slider_arrows',
+		),
+		'lazyload'   => array(
+			'title'    => 'Lazy Load',
+			'meta_key' => 'wpscr_slider_lazyload',
+		),
+		'published'  => array(
+			'title'       => 'Published',
+			'meta_key'    => 'published_date',
+			'date_format' => 'd/m/Y',
+		),
+	),
+
+), array(
+
+	# Override the base names used for labels:
+	'singular' => 'Slider',
+	'plural'   => 'Slider',
+	'slug'     => 'sliders',
+
 ));
-
-// populate the dimensions column
-$slider->populate_column('dimensions', function ($column, $post) {
-	$post_id       = $post->ID;
-	$titan         = TitanFramework::getInstance('wpscr');
-	$slider_width  = $titan->getOption('slider_width', $post_id);
-	$slider_height = $titan->getOption('slider_height', $post_id);
-	echo "<code>$slider_width</code> &times; <code>$slider_height</code>";
-});
-
-// populate the slides column
-$slider->populate_column('slides', function ($column, $post) {
-	$post_id = $post->ID;
-	$gallery = get_post_gallery($post_id, false);
-	$count   = count($gallery['src']);
-	echo $count;
-});
-
-// populate the dots pagination column
-$slider->populate_column('dots', function ($column, $post) {
-	$post_id         = $post->ID;
-	$titan           = TitanFramework::getInstance('wpscr');
-	$slider_infinite = $titan->getOption('slider_dots', $post_id);
-	echo $slider_infinite ? '<span class="wpsrc_true">' . esc_html__('Yes', WPSCR_I18NDOMAIN) . '</span>' : '<span class="wpsrc_false">' . esc_html__('No', WPSCR_I18NDOMAIN) . '</span>';
-});
-
-// populate the arrows navigation column
-$slider->populate_column('arrows', function ($column, $post) {
-	$post_id         = $post->ID;
-	$titan           = TitanFramework::getInstance('wpscr');
-	$slider_infinite = $titan->getOption('slider_arrows', $post_id);
-	echo $slider_infinite ? '<span class="wpsrc_true">' . esc_html__('Yes', WPSCR_I18NDOMAIN) . '</span>' : '<span class="wpsrc_false">' . esc_html__('No', WPSCR_I18NDOMAIN) . '</span>';
-});
-
-// populate the lazyload column
-$slider->populate_column('lazyload', function ($column, $post) {
-	$post_id         = $post->ID;
-	$titan           = TitanFramework::getInstance('wpscr');
-	$slider_lazyload = $titan->getOption('slider_lazyload', $post_id);
-	if ($slider_lazyload == 'false') {
-		$slider_lazyload = esc_html__('Disabled', WPSCR_I18NDOMAIN);
-	}
-	echo ucfirst($slider_lazyload);
-});
-
-// use custom icon for post type
-$slider->menu_icon("dashicons-images-alt2");

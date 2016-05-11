@@ -20,6 +20,8 @@ define( 'WPSCR_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 require_once( 'vendor/autoload.php' );
 require_once( 'vendor/gambitph/titan-framework/titan-framework-checker.php' );
+require_once( 'vendor/johnbillion/extended-cpts/extended-cpts.php' );
+
 require_once( 'includes/assets.php' );
 require_once( 'includes/custom_post_type.php' );
 
