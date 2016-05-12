@@ -49,7 +49,7 @@ function wpscr_admin_footer_text( $text ) {
 }
 
 add_filter( 'update_footer', 'wpscr_change_footer_version', 999);
-function wpscr_change_footer_version() {
+function wpscr_change_footer_version( $text ) {
 	$screen = get_current_screen();
 
 	// Customize only in our CPT

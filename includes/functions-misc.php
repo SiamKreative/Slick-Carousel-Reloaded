@@ -19,6 +19,11 @@
  * @copyright 2016 Julien Vernet
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 /**
  * Get all sliders on the current page
  *

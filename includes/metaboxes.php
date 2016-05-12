@@ -1,22 +1,22 @@
 <?php
 
 /**
-* Slider Options
-*/
+ * Slider Options
+ */
 add_action( 'tf_create_options', 'wpscr_metabox' );
 function wpscr_metabox() {
 	$titan = TitanFramework::getInstance( 'wpscr' );
-	
+
 	$metaBox = $titan->createMetaBox( array(
 		'name' => 'Slider Options',
 		'post_type' => 'slider'
-		) );
+	) );
 
 	$options = wpscr_gallery_options();
 
 	foreach ( $options as $option ) {
 		$metaBox->createOption( $option );
-	}	
+	}
 }
 
 /**
@@ -27,7 +27,7 @@ function wpscr_check_slider_size() {
 	global $pagenow;
 
 	// Check if we are creating a new slider
-	if (($_GET['post_type'] == 'slider') && $pagenow == 'post-new.php') {
+	if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'slider' && $pagenow == 'post-new.php' ) {
 
 		$class = 'notice notice-error';
 		$notice = __( 'To upload pictures, you first need to specify the slider’s size (width and height). <a href="#">Learn why &rarr;</a>', WPSCR_I18NDOMAIN );
@@ -37,7 +37,7 @@ function wpscr_check_slider_size() {
 
 		// Add notice
 		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $notice );
-	
+
 	}
 }
 
@@ -53,10 +53,13 @@ function wpscr_add_shortcode_metabox() {
 		'slider',
 		'side',
 		'low'
-		);
+	);
 }
 
 function wpscr_shortcode_metabox() {
+
+	$sc_code = '';
+	
 	if( isset( $_GET["post"] ) ){
 		$id = trim($_GET["post"]);
 		$sc_code = sprintf( '[slick_carousel id="%s"]', $id );
