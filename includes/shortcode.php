@@ -45,6 +45,7 @@ function wpscr_shortcode( $atts ) {
 			}
 
 			$attachment_meta = wp_get_attachment($attachment);
+			$caption         = $attachment_meta['caption'];
 			$alt             = $attachment_meta['alt'];
 			$media           = wp_get_attachment_image_src( $attachment, $size );
 			$image_url       = wpsrc_get_image_optimized_url( $media[0] );
@@ -57,7 +58,14 @@ function wpscr_shortcode( $atts ) {
 				$image = "<img src='$image_url' width='$media[1]' height='$media[2]' alt='$alt'>";
 			}
 
-			$slider .= "<div class='wpscr_slide'>$image</div>";
+			// Add markup for caption
+			if($caption) {
+				$caption_html = "<div class='wpscr_caption'>$caption</div>";
+			} else {
+				$caption_html = "";
+			}
+
+			$slider .= "<div class='wpscr_slide'>$image$caption_html</div>";
 	
 		}
 		$slider .= '</div>';
