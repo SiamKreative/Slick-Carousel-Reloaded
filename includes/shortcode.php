@@ -44,15 +44,17 @@ function wpscr_shortcode( $atts ) {
 				$size = 'full';
 			}
 
-			$media     = wp_get_attachment_image_src( $attachment, $size );
-			$image_url = wpsrc_get_image_optimized_url( $media[0] );
+			$attachment_meta = wp_get_attachment($attachment);
+			$alt             = $attachment_meta['alt'];
+			$media           = wp_get_attachment_image_src( $attachment, $size );
+			$image_url       = wpsrc_get_image_optimized_url( $media[0] );
 
 			// Update markup for lazy load
 			if ($a['lazyload'] == 'ondemand' || $a['lazyload'] == 'progressive') {
 				// change the src attribute to data-lazy and add blank image
 				$image = "<img src='//www.gstatic.com/psa/static/1.gif' data-lazy='$image_url' width='$media[1]' height='$media[2]' alt=''>";
 			} else {
-				$image = "<img src='$image_url' width='$media[1]' height='$media[2]' alt=''>";
+				$image = "<img src='$image_url' width='$media[1]' height='$media[2]' alt='$alt'>";
 			}
 
 			$slider .= "<div class='wpscr_slide'>$image</div>";
