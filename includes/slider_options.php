@@ -10,6 +10,7 @@ function wpscr_gallery_options() {
 			'desc' => __( 'The width of the slider in pixels.', WPSCR_I18NDOMAIN ),
 			'data_type' => 'int',
 			'default' => 600,
+			'max' => 2000
 			),
 		array(
 			'id' => 'slider_height',
@@ -18,6 +19,7 @@ function wpscr_gallery_options() {
 			'desc' => __( 'The height of the slider in pixels.', WPSCR_I18NDOMAIN ),
 			'data_type' => 'int',
 			'default' => 300,
+			'max' => 2000
 			),
 		array(
 			'id' => 'slider_slidetoshow',
