@@ -39,7 +39,7 @@ function wpscr_shortcode( $atts ) {
 				// change the src attribute to data-lazy and add blank image
 				$image = "<img src='//www.gstatic.com/psa/static/1.gif' data-lazy='$image_url' width='$media[1]' height='$media[2]' alt=''>";
 			} else {
-				$image = "<img src='$image_url' {{layi}} width='$media[1]' height='$media[2]' alt=''>";
+				$image = "<img src='$image_url' width='$media[1]' height='$media[2]' alt=''>";
 			}
 
 			$slider .= "<div class='wpscr_slide'>$image</div>";
