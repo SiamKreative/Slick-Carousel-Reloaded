@@ -107,7 +107,7 @@ function wpscr_get_slider_image_size_name( $post_id ) {
  *
  * @return string
  */
-function wpsrc_get_image_optimized_url( $url ) {
+function wpscr_get_image_optimized_url( $url ) {
 
 	$whitelist = array(
 		'127.0.0.1',
@@ -128,5 +128,27 @@ function wpsrc_get_image_optimized_url( $url ) {
 	}
 
 	return sprintf( 'https://res.cloudinary.com/%1$s/image/fetch/%2$s', $username, $url );
+
+}
+
+/**
+ * Get images IDs of a slider
+ *
+ * @since 1.0.0
+ *
+ * @param int $post_id ID of the slider/post
+ *
+ * @return array
+ */
+function wpscr_get_slider_images( $post_id ) {
+
+	// Get the gallery if any
+	$gallery = get_post_gallery( $post_id, false );
+
+	if ( ! is_array( $gallery ) || ! isset( $gallery['ids'] ) ) {
+		return array();
+	}
+
+	return explode( ',', $gallery['ids'] );
 
 }
