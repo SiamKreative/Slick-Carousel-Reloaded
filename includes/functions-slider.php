@@ -107,7 +107,7 @@ function wpscr_get_slider_image_size_name( $post_id ) {
  *
  * @return string
  */
-function wpsrc_get_image_optimized_url( $url ) {
+function wpscr_get_image_optimized_url( $url ) {
 
 	$whitelist = array(
 		'127.0.0.1',
