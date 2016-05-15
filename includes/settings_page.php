@@ -43,15 +43,6 @@ function wpscr_settings() {
 	) );
 
 	$tab_style->createOption( array(
-		'name' => __( 'Slider Background Color', WPSCR_I18NDOMAIN ),
-		'desc' => __( 'The background color the slider. Can be briefly seen before the first image loads or when Lazy Load is enabled.', WPSCR_I18NDOMAIN ),
-		'id' => 'slider_bg',
-		'type' => 'color',
-		'default' => '#222222',
-		'css' => '.wpscr_slider { background: value }',
-		) );
-
-	$tab_style->createOption( array(
 		'name' => __( 'Slider Loading Spinner', WPSCR_I18NDOMAIN ),
 		'id' => 'slider_loading_spinner',
 		'type' => 'radio-image',
@@ -78,6 +69,14 @@ function wpscr_settings() {
 		'id' => 'slider_default_theme',
 		'type' => 'enable',
 		'default' => true,
+		) );
+
+	$tab_style->createOption( array(
+		'name' => __( 'Custom CSS', WPSCR_I18NDOMAIN ),
+		'desc' => __( 'Add valid CSS in the code editor above.', WPSCR_I18NDOMAIN ),
+		'id' => 'slider_custom_css',
+		'type' => 'code',
+		'default' => file_get_contents(WPSCR_URL . 'assets/custom.css')
 		) );
 
 	$panel->createOption( array( 'type' => 'save', ) );
