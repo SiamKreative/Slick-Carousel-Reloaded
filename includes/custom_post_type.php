@@ -46,11 +46,7 @@ register_extended_post_type('slider', array(
 				<?php
 			},
 		),
-		'published'  => array(
-			'title'       => 'Published',
-			'meta_key'    => 'published_date',
-			'date_format' => 'd/m/Y',
-		),
+		'date'
 	),
 
 ), array(
