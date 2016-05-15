@@ -61,14 +61,14 @@ function wpscr_shortcode_metabox() {
 	$sc_code = '';
 	
 	if( isset( $_GET["post"] ) ){
-		$id = trim($_GET["post"]);
-		$sc_code = sprintf( '[slick_carousel id="%s"]', $id );
+		$post_id = trim($_GET["post"]);
+		$sc_code = sprintf( '[slick_carousel id="%s"]', $post_id );
 	}
 	?>
 
 	<p><?php _e( 'Below is the generated shortcode for this slider. Make sure to click Update first.', WPSCR_I18NDOMAIN ); ?></p>
-	<textarea id="wpscr_slider_sc" class="wpscr_slider_sc" autocorrect="off" spellcheck="false" rows="1"><?php echo $sc_code; ?></textarea>
-	<a class="button-secondary wpscr_copy_sc" data-clipboard-target="#wpscr_slider_sc">
+	<textarea id="wpscr_slider_sc_<?php echo $post_id; ?>" class="wpscr_slider_sc" autocorrect="off" spellcheck="false" rows="1"><?php echo $sc_code; ?></textarea>
+	<a class="button-secondary wpscr_copy_sc" data-clipboard-target="#wpscr_slider_sc_<?php echo $post_id; ?>">
 		<span data-copy-success="<?php _e( 'Copied!', WPSCR_I18NDOMAIN ); ?>"><?php _e( 'Copy to clipboard', WPSCR_I18NDOMAIN ); ?></span>
 		<img src="<?php echo WPSCR_URL; ?>assets/vendor/clipboard.js/clippy.svg" width="13" alt="<?php _e( 'Copy to clipboard', WPSCR_I18NDOMAIN ); ?>">
 	</a>
