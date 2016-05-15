@@ -48,7 +48,7 @@ function wpscr_shortcode( $atts ) {
 			$caption         = $attachment_meta['caption'];
 			$alt             = $attachment_meta['alt'];
 			$media           = wp_get_attachment_image_src( $attachment, $size );
-			$image_url       = wpsrc_get_image_optimized_url( $media[0] );
+			$image_url       = wpscr_get_image_optimized_url( $media[0] );
 
 			// Update markup for lazy load
 			if ($a['lazyload'] == 'ondemand' || $a['lazyload'] == 'progressive') {
