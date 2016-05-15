@@ -53,9 +53,9 @@ function wpscr_shortcode( $atts ) {
 			// Update markup for lazy load
 			if ($a['lazyload'] == 'ondemand' || $a['lazyload'] == 'progressive') {
 				// change the src attribute to data-lazy and add blank image
-				$image = "<img src='//www.gstatic.com/psa/static/1.gif' data-lazy='$image_url' width='$media[1]' height='$media[2]' alt=''>";
+				$image = "<img class='wpscr_slide_img' src='//www.gstatic.com/psa/static/1.gif' data-lazy='$image_url' width='$media[1]' height='$media[2]' alt=''>";
 			} else {
-				$image = "<img src='$image_url' width='$media[1]' height='$media[2]' alt='$alt'>";
+				$image = "<img class='wpscr_slide_img' src='$image_url' width='$media[1]' height='$media[2]' alt='$alt'>";
 			}
 
 			// Add markup for caption
