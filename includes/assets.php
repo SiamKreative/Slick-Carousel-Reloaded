@@ -44,7 +44,6 @@ function wpscr_load_dashboard_assets() {
 
 		wp_enqueue_style( 'wpscr_admin',  WPSCR_URL . 'assets/dashboard.css', array(), '1.5.9' );
 		wp_enqueue_script( 'wpscr_clipboard', WPSCR_URL . 'assets/vendor/clipboard.js/clipboard.min.js', array( 'jquery' ), '1.5.9', true );
-		wp_enqueue_script( 'wpscr_autosize', WPSCR_URL . 'assets/vendor/autosize/autosize.min.js', array( 'jquery' ), '3.0.15', true );
 		wp_enqueue_script( 'wpscr_admin', WPSCR_URL . 'assets/dashboard.js', array( 'jquery' ), '1.5.9', true );
 
 	}

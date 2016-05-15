@@ -22,13 +22,6 @@ jQuery(document).ready(function ($) {
 	});
 
 	/**
-	 * Textarea Autosize
-	 * https://github.com/jackmoore/autosize
-	 */
-	autosize($('#wpscr_slider_customparameters'));
-	autosize($('#wpscr_slider_sc'));
-
-	/**
 	 * Loading Spinners
 	 */
 	$('.form-table .tf-radio-image input[type=radio]').on('change', function (event) {
