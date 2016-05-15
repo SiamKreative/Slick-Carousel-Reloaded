@@ -37,7 +37,13 @@ register_extended_post_type('slider', array(
 				global $post;
 				$post_id = $post->ID;
 				$sc_code = sprintf( '[slick_carousel id="%s"]', $post_id );
-				echo "<code>$sc_code</code>";
+				?>
+				<textarea id="wpscr_slider_sc_<?php echo $post_id; ?>" class="wpscr_slider_sc" autocorrect="off" spellcheck="false" rows="1"><?php echo $sc_code; ?></textarea>
+				<a class="button-secondary wpscr_copy_sc" data-clipboard-target="#wpscr_slider_sc_<?php echo $post_id; ?>">
+					<span data-copy-success="<?php _e( 'Copied!', WPSCR_I18NDOMAIN ); ?>"><?php _e( 'Copy to clipboard', WPSCR_I18NDOMAIN ); ?></span>
+					<img src="<?php echo WPSCR_URL; ?>assets/vendor/clipboard.js/clippy.svg" width="13" alt="<?php _e( 'Copy to clipboard', WPSCR_I18NDOMAIN ); ?>">
+				</a>
+				<?php
 			},
 		),
 		'published'  => array(
