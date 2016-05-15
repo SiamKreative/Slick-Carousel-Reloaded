@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
 	 * Copy to clipboard
 	 * https://github.com/zenorocha/clipboard.js/
 	 */
-	var clipboard = new Clipboard('.button-secondary');
+	var clipboard = new Clipboard('.wpscr_copy_sc');
 
 	clipboard.on('success', function (e) {
 		var btnText = $(e.trigger).find('span');

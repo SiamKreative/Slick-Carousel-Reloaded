@@ -22,19 +22,19 @@
 /**
  * Right Metabox "Slider Shortcode"
  */
-#wpscr_slider_sc:empty {
+.wpscr_slider_sc:empty {
 	display: none;
 }
-#wpscr_slider_sc {
+.wpscr_slider_sc {
 	background-color: #f1f1f1;
 	width: 100%;
 	margin-bottom: 10px;
 }
-#wpscr_slider_sc_copy {
+.wp-core-ui .wpscr_copy_sc {
 	position: relative;
 	padding-right: 40px;
 }
-#wpscr_slider_sc_copy > img {
+.wp-core-ui .wpscr_copy_sc > img {
 	vertical-align: middle;
 	margin-left: 10px;
 	background: #ddd;
