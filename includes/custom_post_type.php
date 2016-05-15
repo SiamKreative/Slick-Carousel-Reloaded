@@ -31,17 +31,14 @@ register_extended_post_type('slider', array(
 				echo $count;
 			},
 		),
-		'dots'       => array(
-			'title'    => 'Dots',
-			'meta_key' => 'wpscr_slider_dots',
-		),
-		'arrows'     => array(
-			'title'    => 'Arrows',
-			'meta_key' => 'wpscr_slider_arrows',
-		),
-		'lazyload'   => array(
-			'title'    => 'Lazy Load',
-			'meta_key' => 'wpscr_slider_lazyload',
+		'shortcode'     => array(
+			'title'    => 'Shortcode',
+			'function' => function () {
+				global $post;
+				$post_id = $post->ID;
+				$sc_code = sprintf( '[slick_carousel id="%s"]', $post_id );
+				echo "<code>$sc_code</code>";
+			},
 		),
 		'published'  => array(
 			'title'       => 'Published',
