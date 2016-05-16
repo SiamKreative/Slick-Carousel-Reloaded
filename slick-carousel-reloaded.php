@@ -14,15 +14,23 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Setup plugin constants
-if( ! defined( 'WPSCR_VERSION' ) ){
+if( ! defined( 'WPSCR_VERSION' ) ) {
 	define( 'WPSCR_VERSION', '1.0.0' );
 }
-define( 'WPSCR_URL', plugin_dir_url( __FILE__ ) );
-define( 'WPSCR_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-define( 'WPSCR_I18NDOMAIN', 'wpscr' );
-define( 'WPSCR_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+if( ! defined( 'WPSCR_URL' ) ) {
+	define( 'WPSCR_URL', plugin_dir_url( __FILE__ ) );
+}
+if( ! defined( 'WPSCR_PATH' ) ) {
+	define( 'WPSCR_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+}
+if( ! defined( 'WPSCR_I18NDOMAIN' ) ) {
+	define( 'WPSCR_I18NDOMAIN', 'wpscr' );
+}
+if( ! defined( 'WPSCR_PLUGIN_BASENAME' ) ) {
+	define( 'WPSCR_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+}
 
-// Load composer dependencies individually (See https://github.com/SiamKreative/slick-carousel-reloaded/issues/14)
+// Load composer dependencies individually (See https://git.io/vrG9d)
 require_once( 'vendor/gambitph/titan-framework/titan-framework-embedder.php' );
 require_once( 'vendor/johnbillion/extended-cpts/extended-cpts.php' );
 
