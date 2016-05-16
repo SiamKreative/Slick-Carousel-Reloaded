@@ -14,7 +14,7 @@ function wpscr_missing_dependencies_warning() {
 	} ?>
 
 	<div id="message" class="error">
-		<p><?php esc_html_e( 'The dependencies for Slick Carousel Reloaded are missing. The plugin can&#039;t be activated.' ); ?></p>
+		<p><?php echo sprintf( wp_kses( __( 'The dependencies for Slick Carousel Reloaded are missing. Please <a href="%s">read this</a> for more details.', WPSCR_I18NDOMAIN ), array(  'a' => array( 'href' => array() ) ) ), esc_url( 'https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies' ) ); ?></p>
 	</div>
 
 <?php }
