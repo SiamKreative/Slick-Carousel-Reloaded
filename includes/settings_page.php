@@ -44,6 +44,7 @@ function wpscr_settings() {
 
 	$tab_style->createOption( array(
 		'name' => __( 'Slider Loading Spinner', WPSCR_I18NDOMAIN ),
+		'desc' => __( 'These are retina-ready loading spinners. The background color is only here for demo purpose.', WPSCR_I18NDOMAIN ),
 		'id' => 'slider_loading_spinner',
 		'type' => 'radio-image',
 		'options' => array(
@@ -65,7 +66,7 @@ function wpscr_settings() {
 
 	$tab_style->createOption( array(
 		'name' => __( 'Load Slick’s Theme', WPSCR_I18NDOMAIN ),
-		'desc' => __( 'If you disable this, the default’s theme for Slick will be removed. This is useful for developers who want to create their own style for Slick.', WPSCR_I18NDOMAIN ),
+		'desc' => __( 'If you disable this, the default’s theme for Slick will be removed. This is useful for developers who want to create their own style for Slick (LESS &amp; SCSS version available).', WPSCR_I18NDOMAIN ),
 		'id' => 'slider_default_theme',
 		'type' => 'enable',
 		'default' => true,
