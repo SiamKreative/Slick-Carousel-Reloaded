@@ -115,7 +115,7 @@ function wpscr_get_image_optimized_url( $url ) {
 	);
 
 	// Don't use Cloudinary if the image is loaded from localhost (development environment)
-	if ( ! in_array( $_SERVER['REMOTE_ADDR'], $whitelist ) ) {
+	if ( in_array( $_SERVER['REMOTE_ADDR'], $whitelist ) ) {
 		return $url;
 	}
 
