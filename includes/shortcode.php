@@ -73,11 +73,7 @@ function wpscr_shortcode( $atts ) {
 			}
 
 			// Add markup for caption
-			if($caption) {
-				$caption_html = "<div class='wpscr_caption'>$caption</div>";
-			} else {
-				$caption_html = "";
-			}
+			$caption_html = $caption ? "<div class='wpscr_caption'>$caption</div>" : false;
 
 			$slider .= "<div class='wpscr_slide'>$image$caption_html</div>";
 	
