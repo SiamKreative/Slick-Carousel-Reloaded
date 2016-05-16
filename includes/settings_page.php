@@ -23,7 +23,7 @@ function wpscr_settings() {
 
 	$tab_general->createOption( array(
 		'name' => __( 'Show Credit Link', WPSCR_I18NDOMAIN ),
-		'desc' => __( 'Enable this option if you want to support the <a href="https://siamkreative.com/">developer of this plugin</a>. This adds a link to the plugin’s page on the footer of your site.', WPSCR_I18NDOMAIN ),
+		'desc' => __( 'Enable this option if you want to support the <a href="https://siamkreative.com/">developer of this plugin</a>. This adds a link to the plugin’s page on top of your sliders.', WPSCR_I18NDOMAIN ),
 		'id' => 'slider_show_credit',
 		'type' => 'enable',
 		'default' => false,

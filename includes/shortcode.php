@@ -40,6 +40,10 @@ function wpscr_shortcode( $atts ) {
 		$style = "style='background-image: url($loading_spinner_url);'";
 	}
 
+	// Get credit link	
+	$credit_link = $titan->getOption( 'slider_show_credit' );
+	$credit_html = $credit_link ? '<div class="wpscr_credit"><style type="text/css" scoped>small {position: absolute; top: 15px; right: 20px; color: white; opacity: 0.8;} small a {color: white; text-decoration: underline;}</style><small>Created with <a target="_blank" href="https://wordpress.org/plugins/slick-carousel-reloaded">Slick Carousel Reloaded</a></small></div>' : false;
+
 	if( $gallery ) {
 	$attachments = explode( ",", $gallery['ids'] );
 	
@@ -78,7 +82,7 @@ function wpscr_shortcode( $atts ) {
 			$slider .= "<div class='wpscr_slide'>$image$caption_html</div>";
 	
 		}
-		$slider .= '</div>';
+		$slider .= "$credit_html</div>";
 	}
 
 	return $slider;
