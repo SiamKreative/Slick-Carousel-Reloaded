@@ -1,5 +1,7 @@
 .slick-slider.wpscr_slider {
 	background-color: #222;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
 }
 .slick-slider.wpscr_slider .wpscr_slide {
 	position: relative;

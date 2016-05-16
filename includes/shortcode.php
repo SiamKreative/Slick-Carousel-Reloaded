@@ -30,10 +30,20 @@ function wpscr_shortcode( $atts ) {
 	// https://pippinsplugins.com/retrieving-image-urls-of-galleries/
 	$gallery = get_post_gallery( $atts['id'], false );
 
+	// Get loading spinner
+	$titan = TitanFramework::getInstance( 'wpscr_settings' );
+	$loading_spinner = $titan->getOption( 'slider_loading_spinner' );
+	$loading_spinner_url = WPSCR_URL . "assets/vendor/svg-loaders/$loading_spinner.svg";
+	if ( $loading_spinner == 'none' ) {
+		$style = "";
+	} else {
+		$style = "style='background-image: url($loading_spinner_url);'";
+	}
+
 	if( $gallery ) {
 	$attachments = explode( ",", $gallery['ids'] );
 	
-		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $atts['id'] .'" data-id="'. $atts['id'] .'">';
+		$slider = '<div class="wpscr_slider" id="wpscr_slider_'. $atts['id'] .'" data-id="'. $atts['id'] .'" '. $style .'>';
 		foreach( $attachments as $attachment ) {
 
 			// Get custom size
