@@ -10,6 +10,9 @@
  * Author URI: https://siamkreative.com/
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Setup plugin constants
 if( ! defined( 'WPSCR_VERSION' ) ){
 	define( 'WPSCR_VERSION', '1.0.0' );
