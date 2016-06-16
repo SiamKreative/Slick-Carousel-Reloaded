@@ -94,31 +94,79 @@ function wpscr_gallery_options() {
 
 function wpscr_get_gallery_options( $post_id ) {
 
-	$opts = array();
+	$opts    = array();
 	$options = wpscr_gallery_options();
 
 	foreach ( $options as $option ) {
-		$key = 'wpscr_' . $option['id'];
-		$sc_attr_name = str_replace('slider_', '', $option['id']);
-		$value = get_post_meta( $post_id, $key, true );
-		if( isset($option['data_type']) ) {
-			switch ($option['data_type']) {
-				case 'bool':
-					$value = (bool)$value;
-					break;
-				
-				case 'int':
-					$value = (int)$value;
-					break;
-				
-				default:
-					$value = (string)$value;
-					break;
+
+		$key          = 'wpscr_' . $option['id'];
+		$sc_attr_name = str_replace( 'slider_', '', $option['id'] );
+		$value        = get_post_meta( $post_id, $key, true );
+
+		if ( 'customparameters' === $sc_attr_name ) {
+
+			$params = explode( PHP_EOL, $value );
+
+			foreach ( $params as $param ) {
+
+				$param = trim( $param );
+
+				if ( ',' === substr( $param, - 1 ) ) {
+					$param = trim( $param, ',' );
+				}
+
+				$param = explode( ':', trim( $param, ' ,' ) );
+				$input = trim( $param[1], " '" );
+
+				// Because custom parameters are free text, we cannot typecast the value and it will always be returned as string.
+				// In order to be able to use different data types, we'll hack the value and hope we're not wrong and don't break the user-intended behavior...
+				if ( 'true' === $input || 'false' === $input ) {
+					$input = wpscr_typecast( $input, 'bool' );
+				} elseif ( is_numeric( $input ) ) {
+					$input = wpscr_typecast( $input, 'int' );
+				}
+
+				$opts[ $param[0] ] = $input;
+
 			}
+
+
+		} else {
+
+			if ( ! isset( $option['data_type'] ) ) {
+				$option['data_type'] = '';
+			}
+
+			$opts[ $sc_attr_name ] = wpscr_typecast( $value, $option['data_type'] );
+
 		}
-		$opts[$sc_attr_name] = $value;
+
 	}
 
 	return $opts;
+
+}
+
+function wpscr_typecast( $value, $data_type ) {
+
+	if ( ! empty( $data_type ) ) {
+
+		switch ( $data_type ) {
+			case 'bool':
+				$value = (bool) $value;
+				break;
+
+			case 'int':
+				$value = (int) $value;
+				break;
+
+			default:
+				$value = (string) $value;
+				break;
+		}
+
+	}
+
+	return $value;
 
 }
