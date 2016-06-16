@@ -90,3 +90,29 @@ function wpscr_get_sliders() {
 	return $sliders;
 
 }
+
+/**
+ * Get all published sliders
+ *
+ * @since 1.0.0
+ * @return array Array of slider IDs
+ */
+function wpscr_get_all_sliders() {
+
+	$sliders = new WP_Query( array(
+		'post_type'              => 'slider',
+		'posts_per_page'         => - 1,
+		'post_status'            => 'publish',
+		'fields'                 => 'ids',
+		'cache_results'          => false,
+		'update_post_meta_cache' => false,
+		'no_found_rows'          => true
+	) );
+
+	if ( empty( $sliders->posts ) ) {
+		return array();
+	}
+
+	return $sliders->posts;
+
+}

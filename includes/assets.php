@@ -20,7 +20,7 @@ function wpscr_load_frontend_assets() {
 		wp_enqueue_script( 'wpscr_slick', WPSCR_URL . 'assets/vendor/slick/slick.min.js', array( 'jquery' ), '1.5.9', true );
 		wp_enqueue_script( 'wpscr_slick_init', WPSCR_URL . 'assets/slick-carousel-reloaded.js', array( 'jquery', 'wpscr_slick' ), WPSCR_VERSION, true );
 
-		$sliders = wpscr_get_sliders();
+		$sliders = wpscr_get_all_sliders();
 
 		if ( ! empty( $sliders ) ) {
 			foreach ( $sliders as $slider_id ) {
