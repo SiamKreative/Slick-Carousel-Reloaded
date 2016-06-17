@@ -80,9 +80,9 @@ function wpscr_gallery_options() {
 		array(
 			'id' => 'slider_customparameters',
 			'name' => __( 'Custom Parameters', WPSCR_I18NDOMAIN ),
-			'type' => 'textarea',
+			'type' => 'code',
+			'lang' => 'javascript',
 			'desc' => __( 'Put your additional Slick parameters. One parameter per line. <a href="https://github.com/kenwheeler/slick/#settings" target="_blank">See all parameters</a>.', WPSCR_I18NDOMAIN ),
-			'is_code' => true,
 			'default' => ''
 			)
 
