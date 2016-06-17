@@ -63,6 +63,7 @@ function wpscr_shortcode( $atts ) {
 			$alt             = $attachment_meta['alt'];
 			$media           = wp_get_attachment_image_src( $attachment, $size );
 			$image_url       = wpscr_get_image_optimized_url( $media[0] );
+			$custom_url      = get_post_meta( $attachment, '_gallery_link_url', true );
 
 			// Update markup for lazy load
 			if ($a['lazyload'] == 'ondemand' || $a['lazyload'] == 'progressive') {
@@ -70,6 +71,11 @@ function wpscr_shortcode( $atts ) {
 				$image = "<img class='wpscr_slide_img' src='//www.gstatic.com/psa/static/1.gif' data-lazy='$image_url' width='$media[1]' height='$media[2]' alt=''>";
 			} else {
 				$image = "<img class='wpscr_slide_img' src='$image_url' width='$media[1]' height='$media[2]' alt='$alt'>";
+			}
+
+			// Add link on slides
+			if (!empty($custom_url)) {
+				$image = "<a href='$custom_url'>$image</a>";
 			}
 
 			// Add markup for caption
